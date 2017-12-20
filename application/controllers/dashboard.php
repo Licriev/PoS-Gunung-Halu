@@ -4,6 +4,10 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->view('view_dashboard');
 	}
+
+	function edit(){
+		
+	}
 }
 
 ?>
