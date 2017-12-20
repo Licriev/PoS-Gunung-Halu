@@ -1,0 +1,7 @@
+.custom-profpic{
+	-webkit-clip-path: circle(50% at 50% 50%);
+	clip-path: circle(50% at 50% 50%);
+	max-width: 60px;
+	margin-left:20%;
+	margin-top:20%;
+}
