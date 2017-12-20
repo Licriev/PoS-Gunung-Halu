@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Point </title>
+    <title><?php echo (isset($top_title) ? $top_title : "Point of Sales");?></title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets');?>/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
