@@ -8,6 +8,10 @@ class Dashboard extends CI_Controller {
 	function edit(){
 		
 	}
+
+	function view(){
+		
+	}
 }
 
 
