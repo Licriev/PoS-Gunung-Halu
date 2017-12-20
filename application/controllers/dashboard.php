@@ -6,7 +6,7 @@ class Dashboard extends CI_Controller {
 	}
 
 	function edit(){
-		
+		//test git lagi	
 	}
 }
 
