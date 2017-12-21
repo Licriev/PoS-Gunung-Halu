@@ -41,7 +41,7 @@ class Dashboard extends CI_Controller {
 				'name' => 'Test Page',
 			),
 			3 => array(
-				'link' => base_url,
+				'link' => base_url(),
 				'name' => 'auth/login',
 			),
 		);
