@@ -20,6 +20,13 @@ class Dashboard extends CI_Controller {
 	public function test_page(){
 
 		$data = array();
+
+		//memberi title pada bagian title bar/tab, pada tag <title>
+		$data['top_title'] = 'Dashboard';
+
+		//memberi title halaman
+		$data['title'] = 'Test Page';
+
 		//menentukan view halaman
 		$data['sub_view'] = 'view_test_page';
 
