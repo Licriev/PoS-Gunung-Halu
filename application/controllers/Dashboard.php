@@ -40,12 +40,14 @@ class Dashboard extends CI_Controller {
 				'link' => null,
 				'name' => 'Test Page',
 			),
+			3 => array(
+				'link' => base_url,
+				'name' => 'auth/login',
+			),
 		);
 
 		//load template utama
 		$this->load->view('main_view', $data, FALSE);
 	}
 }
-
-
 ?>
