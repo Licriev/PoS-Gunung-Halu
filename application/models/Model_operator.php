@@ -1,5 +1,5 @@
 <?php
-class model_operator extends CI_Model {
+class Model_operator extends CI_Model {
 	function login($username,$password)
 	{
 		$cek = $this->db->get_where('operator',array('username'=>$username,'password'=>md5($password)));
