@@ -7,7 +7,7 @@
       <li class=""><a><i class="fa fa-list"></i> Menu <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu" style="display: none;">
           <li><a href="<?php echo base_url('dashboard/test_page');?>">Test Page</a></li>
-          <li><a href="#">Menu 2</a></li>
+          <li><a href="<?php echo base_url('dashboard/test_lib');?>">Test Library</a></li>
           <li><a href="#">Menu 3</a></li>
         </ul>
       </li>

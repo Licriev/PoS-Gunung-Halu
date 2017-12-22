@@ -30,76 +30,62 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <?php
-				      echo form_open('index.php/auth/login');
-			     ?>
-			<h1>Login Form</h1>
+
+
+
+            <form action="javascript:;" method="post" id="form-login">
+
+
+			        <h1>Login Form</h1>
+
+              <div class="alert alert-danger alert-dismissible fade in" role="alert" id="login-alert" style="display:none;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                </button>
+                <strong>Oops!</strong> <span id="alert-text"> </span>
+              </div>
+
               <div>
                 <input type="text" class="form-control" placeholder="Username" name="username"/>
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" name="password"  />
               </div>
+              <input type="hidden" name="auth" value="psGnhL2k17">
               <div>
-                <a class="btn btn-default submit" name="submit">Log in</a>
+                <button type="submit" class="btn btn-default submit" name="submit" id="login">Log in</a>
+                
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                
                 <a class="reset_pass" href="#">Lost your password?</a>
-              </div>
-
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">New to site?
-                  <a href="#signup" class="to_register"> Create Account </a>
-                </p>
 
                 <div class="clearfix"></div>
                 <br />
 
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
               </div>
             </form>
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
-          <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
-              </div>
-              <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
-              </div>
-              <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
-              </div>
-              <div>
-                <a class="btn btn-default submit" href="index.html">Submit</a>
-              </div>
 
-              <div class="clearfix"></div>
-
-              <div class="separator">
-                <p class="change_link">Already a member ?
-                  <a href="#signin" class="to_register"> Log in </a>
-                </p>
-
-                <div class="clearfix"></div>
-                <br />
-
-                <div>
-                  <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
-                </div>
-              </div>
-            </form>
-          </section>
-        </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      var base_url = "<?php echo base_url();?>";
+    </script>
+
+    <!-- jQuery -->
+    <script src="<?php echo base_url('assets');?>/vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="<?php echo base_url('assets');?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="<?php echo base_url('assets');?>/js/auth.js"></script>
+
+
+
   </body>
 </html>
