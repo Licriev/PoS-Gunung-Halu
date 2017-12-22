@@ -15,16 +15,16 @@
     <link href="<?php echo base_url('assets');?>/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url('assets');?>/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- bootstrap-progressbar -->
-    <link href="<?php echo base_url('assets');?>/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-    <!-- jVectorMap -->
-    <link href="<?php echo base_Url('assets');?>/css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url('assets');?>/build/css/custom.min.css" rel="stylesheet">
     <link href="<?php echo base_url('assets');?>/css/pgs_custom.css" rel="stylesheet">
-  </head>
 
+    <?php if($style!=null) echo $style;?>
+
+    <?php if($head_tag!=null) $this->load->view($head_tag);?>
+  </head>
+  <?php $userdata = $this->session->userdata('user_auth');?>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -43,7 +43,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?php echo $userdata['username'];?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -67,7 +67,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url("assets/");?>images/user.png" alt="">John Doe
+                    <img src="<?php echo base_url("assets/");?>images/user.png" alt=""><?php echo $userdata['username'];?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -79,7 +79,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="<?php echo base_url('auth/logout');?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -92,7 +92,12 @@
         <!-- page content -->
         <div class="right_col" role="main">
 
-          <?php if(strlen($sub_view)>0) $this->load->view($sub_view); ?>
+          <div class="">
+
+            <?php $this->load->view('view_components/page_title'); ?>
+            <?php if(strlen($sub_view)>0) $this->load->view($sub_view); ?>
+
+          </div>
 
         </div>
         <!-- /page content -->
@@ -114,7 +119,9 @@
     <script src="<?php echo base_url('assets');?>/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url('assets');?>/build/js/custom.min.js"></script>
 
-    
+    <?php if($script!=null) echo $script;?>
+
+    <?php if($foot_tag!=null) $this->load->view($foot_tag);?>    
 
   </body>
 </html>

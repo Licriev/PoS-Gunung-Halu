@@ -10,11 +10,8 @@ class Dashboard extends CI_Controller {
 	public function index(){
 
 		$data = array();
-		$data['top_title'] = 'Dashboard';
-		$data['sub_view'] = 'view_dashboard';
 
-
-		$this->load->view('main_view',$data, FALSE);
+		$this->layout->render();
 	}
 
 	public function test_page(){
@@ -48,6 +45,29 @@ class Dashboard extends CI_Controller {
 
 		//load template utama
 		$this->load->view('main_view', $data, FALSE);
+	}
+
+	public function test_lib(){
+		$data = array();
+
+		$this->layout->set_header("Test Lib Page");
+		$this->layout->set_title("Halaman Test Lib");
+		$this->layout->set_titlesmall('small title');
+		$this->layout->set_breadcrumb('Dashboard',base_url());
+		$this->layout->set_breadcrumb('Test Lib');
+
+		$this->layout->set_style(base_url('assets')."/css/pgs_custom.css");
+		$this->layout->set_style(base_url('assets')."/css/pgs_custom.css");
+
+		$this->layout->set_script(base_url('assets')."/build/js/custom.min.js");
+		$this->layout->set_script(base_url('assets')."/build/js/custom.min.js");
+
+		$this->layout->set_head_tag('test_headfoot');
+		$this->layout->set_foot_tag('test_headfoot');
+
+		$this->layout->set_content('view_test_page');
+		$this->layout->render($data);
+
 	}
 }
 ?>

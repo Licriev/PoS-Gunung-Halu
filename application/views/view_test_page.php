@@ -1,6 +1,4 @@
 <div class="">
-  
-  <?php $this->load->view('view_components/page_title'); ?>
 
   <div class="clearfix"></div>
 
