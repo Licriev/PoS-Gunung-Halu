@@ -19,20 +19,22 @@ class Auth extends CI_Controller {
 			if($hasil['result']){
 				if( password_verify($password,$hasil['password'])){						
 
-						$data_session = array(
-							'id_operator' 	=> $hasil['operator_id'], 
-							'nama_operator'	=> $hasil['nama_lengkap'],
-							'username'		=> $hasil['username']
-						);
-						$this->session->set_userdata('user_auth',$data_session);
+					$data_session = array(
+						'id_operator' 	=> $hasil['operator_id'], 
+						'nama_operator'	=> $hasil['nama_lengkap'],
+						'username'		=> $hasil['username']
+					);
+					$this->session->set_userdata('user_auth',$data_session);
 
-						echo json_encode(array('result'=>true,'cek_username' => true));
-						
-					}else{
-						echo json_encode(array('result'=>false,'cek_username' => true));
-						
-					}
-			}			
+					echo json_encode(array('result'=>true,'cek_username' => true));
+					
+				}else{
+					echo json_encode(array('result'=>false,'cek_username' => true));
+					
+				}
+			}else{
+				echo json_encode(array('result'=>false,'cek_username'=>false));
+			}		
 		}else{
 			redirect(base_url(),'refresh');
 		}
