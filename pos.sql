@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.0.2
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 20, 2017 at 01:06 AM
--- Server version: 10.0.17-MariaDB
--- PHP Version: 5.6.14
+-- Host: localhost
+-- Generation Time: Dec 23, 2017 at 04:56 
+-- Server version: 10.1.19-MariaDB
+-- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -79,7 +79,7 @@ CREATE TABLE `operator` (
   `operator_id` int(11) NOT NULL,
   `nama_lengkap` varchar(50) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` text NOT NULL,
   `last_login` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -88,8 +88,8 @@ CREATE TABLE `operator` (
 --
 
 INSERT INTO `operator` (`operator_id`, `nama_lengkap`, `username`, `password`, `last_login`) VALUES
-(1, 'aji setiawan', 'aji', '8d045450ae16dc81213a75b725ee2760', '2016-07-24'),
-(2, 'ida husna', 'ida', '7f78f270e3e1129faf118ed92fdf54db', '2014-07-17');
+(1, 'aji', 'aji', '$2y$10$/IHE1jdBHo9ifInIuo5uZeeZ8LoVxj0APpY0zScq0UwpJXhSRzP.G', '0000-00-00'),
+(2, 'test', 'test', '$2y$10$wKlHTmS.uAKlf.hddFYP.uNjAtxeuqSLbob3GEkrbcT8MOq5Kjxoy', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -196,7 +196,7 @@ ALTER TABLE `kategori_barang`
 -- AUTO_INCREMENT for table `operator`
 --
 ALTER TABLE `operator`
-  MODIFY `operator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `operator_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
