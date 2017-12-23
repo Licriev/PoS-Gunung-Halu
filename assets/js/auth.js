@@ -27,16 +27,20 @@ var Login = function () {
 
 		$.ajax({
 		    type: "POST",
-		    url: base_url+"auth/login",
+		    url: base_url+"auth/proses_login",
 		    data: "username=" + username + "&password=" + password + "&auth=" + token,
 		    success: function(resp) {
 		        var obj = jQuery.parseJSON( resp );
-		        if(obj.result === true){
-		            window.location = "";
-		        } else {
-		        	$('#alert-text').text("Username atau password salah!")
+		        if(obj.result === true && obj.cek_username == true){
+		            window.location = '';
+		        } else if( obj.result == false && obj.cek_username == true) {
+					$('#alert-text').text("Username atau password salah!")
 		            $('#login-alert').show();
-		        }
+
+		        }else{
+					$('#alert-text').text("Username Belum Terdaftar Silahkan Register Dahulu")
+					$('#login-alert').show();
+				}
 		    },
 		    beforeSend: function()
 		    {

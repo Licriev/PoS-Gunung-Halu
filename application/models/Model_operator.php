@@ -8,21 +8,38 @@ class Model_operator extends CI_Model {
 	}
 
 
-	function login($username,$password)
+	function login($username)
 	{	
-		$this->db->select('operator_id,nama_lengkap,username');
-		$cek = $this->db->get_where('operator',array('username'=>$username,'password'=>md5($password)));
+		$this->db->select();
+		$cek = $this->db->get_where('operator',array('username'=>$username));
 
+		$isi = $cek->row();
 		$data = array();
-		if($cek->num_rows() > 0){
-			$data = $cek->row_array();
-			$data['result'] = true;
+		if($cek->num_rows() != 1){
+			$data['result'] = false;
+			$data['cek_username'] = false;
 			return $data;
 		}else{
-			$data['result'] = false;
-			return $data;	
+			$data = $cek->row_array();
+			$data['result'] = true;
+			$data['cek_username'] = true;
+			return $data;
 		}	
 	}
+
+	function regis($tabel,$data)
+	{
+		$this->db->insert($tabel,$data);
+	}
+
+	public function cek_username($tabel,$username)
+	{
+		return $this->db->select('username')
+				 ->from($tabel)
+				 ->where('username',$username)
+				 ->get()->result();
+	  }
+	
 
 }
 
