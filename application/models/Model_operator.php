@@ -4,12 +4,12 @@ class Model_operator extends CI_Model {
 
 	public function __construct(){
 		parent::__construct();
-		
+
 	}
 
 
 	function login($username)
-	{	
+	{
 		$this->db->select();
 		$cek = $this->db->get_where('operator',array('username'=>$username));
 
@@ -24,7 +24,7 @@ class Model_operator extends CI_Model {
 			$data['result'] = true;
 			$data['cek_username'] = true;
 			return $data;
-		}	
+		}
 	}
 
 	function regis($tabel,$data)
@@ -39,8 +39,24 @@ class Model_operator extends CI_Model {
 				 ->where('username',$username)
 				 ->get()->result();
 	  }
-	
-
+	function tampil_users()
+	{
+		return $this->db->select('nama_lengkap, username, last_login')
+		->get('operator')->result_array();
+	}
+	function tampil_user($where)
+	{
+		return $this->db->get_where('operator', $where)->row_array();
+	}
+	function edit_user($where, $data)
+	{
+		$this->db->where($where);
+		return $this->db->update('operator', $data);
+	}
+	function _delete($table, $where)
+	{
+		$this->db->delete($table, $where);
+	}
 }
 
 
