@@ -50,19 +50,31 @@ class Dashboard extends CI_Controller {
 	public function test_lib(){
 		$data = array();
 
-		$this->layout->set_header("Test Lib Page");
-		$this->layout->set_title("Halaman Test Lib");
+		//judul tab/browser
+		$this->layout->set_header("Test Page");
+
+		//set judul halaman
+		$this->layout->set_title("Test Title");
+
+		//set sub judul halaman
 		$this->layout->set_titlesmall('small title');
+
+		//set breadcrumb
 		$this->layout->set_breadcrumb('Dashboard',base_url());
-		$this->layout->set_breadcrumb('Test Lib');
-
+		$this->layout->set_breadcrumb('Test Page');
+		$this->layout->set_breadcrumb('Edit Page');
+		
+		//load css tambahan
 		$this->layout->set_style(base_url('assets')."/css/pgs_custom.css");
 		$this->layout->set_style(base_url('assets')."/css/pgs_custom.css");
 
+		//load js tambahan
 		$this->layout->set_script(base_url('assets')."/build/js/custom.min.js");
 		$this->layout->set_script(base_url('assets')."/build/js/custom.min.js");
+
 
 		$this->layout->set_head_tag('test_headfoot');
+
 		$this->layout->set_foot_tag('test_headfoot');
 
 		$this->layout->set_content('view_test_page');

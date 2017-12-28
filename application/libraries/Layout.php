@@ -168,7 +168,7 @@ class Layout
     	$data['style'] = $this->style;
     	$data['script'] = $this->script;
 
-    	$data['header'] = $this->header;
+    	$data['top_title'] = $this->header;
     	$data['title'] = $this->title;
     	$data['titlesmall'] = $this->titlesmall;
     	$data['breadcrumb'] = $this->breadcrumb;
