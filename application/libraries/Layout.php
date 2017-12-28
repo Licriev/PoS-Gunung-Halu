@@ -25,7 +25,7 @@ class Layout
 	{
         $this->CI =& get_instance();
         $this->sess = $this->CI->session->userdata('user_auth');
-        $this->_auth = (count($this->sess) > 0 ? true : false);
+        $this->_auth = (!empty($this->sess) ? true : false);
 	}
 
 	//getter
