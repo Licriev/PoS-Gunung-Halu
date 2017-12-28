@@ -14,6 +14,7 @@ class Layout
 	protected $head_tag = null;
 	protected $foot_tag = null;
 	private $_auth = true;
+    private $_sess = array();
 
 	private $main_view = "main_view";
 	private $login_view = "form_login";
@@ -23,7 +24,8 @@ class Layout
 	public function __construct()
 	{
         $this->CI =& get_instance();
-        $this->_auth = (count($this->CI->session->userdata('user_auth')) > 0 ? true : false);
+        $this->sess = $this->CI->session->userdata('user_auth');
+        $this->_auth = (count($this->sess) > 0 ? true : false);
 	}
 
 	//getter
