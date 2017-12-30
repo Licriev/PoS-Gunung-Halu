@@ -39,7 +39,7 @@
 			        <h1>Login Form</h1>
 
               <div class="alert alert-danger alert-dismissible fade in" role="alert" id="login-alert" style="display:none;">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-close"></span>
                 </button>
                 <strong>Oops!</strong> <span id="alert-text"> </span>
               </div>
@@ -53,13 +53,13 @@
               <input type="hidden" name="auth" value="psGnhL2k17">
               <div>
                 <button type="submit" class="btn btn-default submit" name="submit" id="login">Log in</a>
-                
+
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                
+
                 <a class="reset_pass" href="#">Lost your password?</a>
 
                 <div class="clearfix"></div>
