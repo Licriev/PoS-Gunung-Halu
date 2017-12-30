@@ -19,6 +19,15 @@ var EditUser = function () {
 	        $('#editpass').click(function(event) {
 	        	edit_pass();
 	        });
+		$('#form-create-user input').keypress(function (e) {
+	            if (e.which == 13) {
+	                create_user();
+	            }
+	        });
+
+	        $('#createuser').click(function(event) {
+	        	create_user();
+	        });
 	}
 
 
@@ -39,7 +48,10 @@ var EditUser = function () {
 		    success: function(data) {
 		        if(data.result === true){
 							window.location = '';
-		        }
+		        }else{
+							$('#alert-text').html(data.error);
+				      $('#user-alert').show();
+						}
 		    },
 		    beforeSend: function()
 		    {
@@ -73,6 +85,40 @@ var EditUser = function () {
 							$('#pass-alert-text').html(data.error);
 				      $('#pass-alert').show();
 						}
+		    },
+		    beforeSend: function()
+		    {
+
+		    }
+		});
+	}
+	var create_user = function(){
+		var nama_lengkap = $("input[name=nama_lengkap]").val();
+		var username = $("input[name=username]").val();
+		var password = $("input[name=password]").val();
+		var passconf = $("input[name=passconf]").val();
+
+		if(username=='' || nama_lengkap=='' || password=='' || passconf==''){
+			$('#alert-text-danger').text("Nama Lengkap, Username dan Password harus diisi!")
+		  $('#login-alert-danger').show();
+			return;
+		}
+
+		$.ajax({
+		    type: "POST",
+		    url: base_url+"dashboard/create_user",
+		    data: $('#form-create-user').serialize(),
+				dataType: "json",
+		    success: function(data) {
+					if(data.result === true && data.username === true){
+							window.location = base_url+"dashboard/users";
+					}else if(data.username === false){
+							$('#alert-text-warning').html("Username Telah Di gunakan");
+							$('#login-alert-warning').show();
+					}else{
+							$('#alert-text-danger').html(data.error);
+							$('#login-alert-danger').show();
+					}
 		    },
 		    beforeSend: function()
 		    {

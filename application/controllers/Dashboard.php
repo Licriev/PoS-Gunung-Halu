@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
 	public function profile()
 	{
 		$id = $this->session->userdata('user_auth')['id_operator'];
-		$this->data['user'] = $this->model_operator->tampil_user(array('operator_id'=>$id));
+		$data['user'] = $this->model_operator->tampil_user(array('operator_id'=>$id));
 		$this->layout->set_header("Profile");
 		$this->layout->set_title("Profile");
 		$this->layout->set_breadcrumb('Dashboard',base_url());
@@ -102,14 +102,52 @@ class Dashboard extends CI_Controller {
 		$this->layout->set_script(base_url('assets')."/js/users.js");
 		$this->layout->set_foot_tag('users_master/jsfoot_users');
 		$this->layout->set_content('users_master/view_edituser');
-		$this->layout->render($this->data);
+		$this->layout->render($data);
+	}
+	public function create_user()
+	{
+		$this->form_validation->set_rules('namaLengkap', 'Nama Lengkap', 'required');
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+		$this->form_validation->set_rules('passconf', 'Konfirmasi Password', 'required|matches[password]');
+		$namaLenkap = $this->input->post('namaLengkap');
+		$username =  $this->input->post('username');
+		$password = $this->input->post('password');
+		if($this->form_validation->run() === FALSE)
+		{
+			$data = array();
+			$this->layout->set_header("Create User");
+			$this->layout->set_title("Create User");
+			$this->layout->set_breadcrumb('Dashboard',base_url());
+			$this->layout->set_breadcrumb('Create User');
+			$this->layout->set_script(base_url('assets')."/js/users.js");
+			$this->layout->set_foot_tag('users_master/jsfoot_users');
+			$this->layout->set_content('users_master/view_create');
+			$this->layout->render($data);
+		}else{
+			if($this->model_operator->cek_username('operator',$username))
+			{
+				echo json_encode(['username' => FALSE]);
+			}else{
+				$data = array(
+					'nama_lengkap' => $namaLenkap,
+					'username' => $username,
+					'password' => password_hash($password, PASSWORD_DEFAULT),
+				);
+				$this->model_operator->regis('operator',$data);
+				echo json_encode(['result' => TRUE , 'username' => TRUE]);
+			}
+		}
 	}
 	public function update_user()
 	{
 		$id = $this->session->userdata('user_auth')['id_operator'];
 		$this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'required|trim');
 		$this->form_validation->set_rules('username', 'Username', 'required|trim');
-		if ($this->form_validation->run() === TRUE) {
+		if ($this->form_validation->run() === FALSE) {
+			$error = validation_errors();
+			echo json_encode(['error' => $error,'result' => FALSE]);
+		} else {
 			$data = array(
 				'nama_lengkap' => $this->input->post('nama_lengkap'),
 				'username' => $this->input->post('username'),
@@ -117,8 +155,6 @@ class Dashboard extends CI_Controller {
 			if ($this->model_operator->edit_user(array('operator_id'=>$id), $data)) {
 				echo json_encode(array('result'=>TRUE));
 			}
-		} else {
-
 		}
 	}
 	public function update_password()
@@ -144,7 +180,8 @@ class Dashboard extends CI_Controller {
 	{
 		$data['operator_id'] = $this->session->userdata('user_auth')['id_operator'];
 		$this->model_operator->_delete('operator', $data);
-		redirect('dashboard/users');
+		session_destroy();
+		redirect(base_url(),'refresh');
 	}
 }
 ?>
