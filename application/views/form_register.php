@@ -39,24 +39,24 @@
               <h1>Register Form</h1>
 
               <div class="alert alert-success alert-dismissible fade in" role="alert" id="login-alert-success" style="display:none;">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-close"></span>
                 </button>
                 <strong>Success!</strong> <span id="alert-text-success"> </span>
               </div>
 
               <div class="alert alert-warning alert-dismissible fade in" role="alert" id="login-alert-warning" style="display:none;">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-close"></span>
                 </button>
                 <strong>Warning!</strong> <span id="alert-text-warning"> </span>
               </div>
 
 
               <div class="alert alert-danger alert-dismissible fade in" role="alert" id="login-alert-danger" style="display:none;">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="fa fa-close"></span>
                 </button>
                 <strong>Oops!</strong> <span id="alert-text-danger"></span>
               </div>
-              
+
               <div>
                 <input type="text" class="form-control" placeholder="Nama Lengkap" name="namaLengkap"/>
               </div>
@@ -72,13 +72,13 @@
               <input type="hidden" name="auth" value="psGnhL2k17">
               <div> -->
                 <button type="submit" class="btn btn-default submit" name="submit" id="register">Register</a>
-                
+
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
-                
+
 
                 <div class="clearfix"></div>
                 <br />

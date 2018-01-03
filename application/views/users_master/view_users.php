@@ -31,7 +31,6 @@
               <th>Username</th>
               <th>Nama Lengkap</th>
               <th>Last Login</th>
-              <th>Options</th>
             </tr>
             <?php $i=1;foreach ($users as $row): ?>
             <tr>
@@ -39,7 +38,6 @@
               <td><?php echo $row['username'] ?></td>
               <td><?php echo $row['nama_lengkap'] ?></td>
               <td><?php echo $row['last_login'] ?></td>
-              <td><a href="edit_user/<?php echo $row['username'] ?>">Edit</a> | <a href="delete_user">Delete</a></td>
             </tr>
             <?php endforeach; ?>
           </table>

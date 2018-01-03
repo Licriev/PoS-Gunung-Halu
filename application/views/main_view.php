@@ -71,7 +71,7 @@
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
+                    <li><a href="<?php echo base_url('dashboard/profile') ?>"> Profile</a></li>
                     <li>
                       <a href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
@@ -121,7 +121,7 @@
 
     <?php if($script!=null) echo $script;?>
 
-    <?php if($foot_tag!=null) $this->load->view($foot_tag);?>    
+    <?php if($foot_tag!=null) $this->load->view($foot_tag);?>
 
   </body>
 </html>
