@@ -40,20 +40,20 @@
             <form action="javascript:;" method="post" id="formInputBarang">
             <div class="form-group">
                 <label class="control-label" for="kategoriBarang">Kategori Barang</label><br>
-                <select name="kategoriBarang" id="kategoriBarang">
-                <option value="">-- Pilih --</option>
-                <?php foreach($listKategori as $d): ?>
-                  <option value="<?=$d->kategori_id?>"><?=$d->nama_kategori?></option>
-                <?php endforeach; ?>
+                <select class="form-control" name="kategoriBarang" id="kategoriBarang">
+                  <option value="" selected >-- Pilih --</option>
+                  <?php foreach($listKategori as $d): ?>
+                    <option class="kategori_id" value="<?=$d->kategori_id?>" id="isi"><?=$d->nama_kategori?></option>
+                  <?php endforeach; ?>
                 </select>
             </div>
             <div class="form-group">
                 <label for="namaBarang" class="control-label col-md-3">Nama Barang</label>
-                <input type="text" class="form-control" placeholder="Input Nama Barang" name="namaBarang"/>
+                <input type="text" id="nama_barang" class="form-control" placeholder="Input Nama Barang" name="namaBarang"/>
             </div>
             <div class="form-group">
                 <label class="control-label col-md-3" for="harga">Harga</label>
-                <input type="text" class="form-control" placeholder="Input Harga" name="harga"  />
+                <input type="text" id="harga" class="form-control" placeholder="Input Harga" name="harga"  />
             </div>
             <div class="form-group">
                 <input type="submit" name="submit" value="Submit" style="float:right;" class="btn btn-success col-md-2" id="submitBarang">

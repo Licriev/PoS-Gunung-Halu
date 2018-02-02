@@ -15,7 +15,7 @@ var Barang = function(){
             $('.btn_edit').click(function(event){
                 var id =$(this).attr('data-id');
                 get_data_update(id);
-                
+                // listEdit(id);   
             });
 
             $('.submitBtn').click(function(event){
@@ -68,14 +68,55 @@ var Barang = function(){
                 type: "GET",               
                 dataType: "json",
                 success: function(data){
-                    $('[name="barang_id"]').val(data.barang_id);
-                    $('#kategoriId option:selected').val(data.kategori_id);
-                    $('#isi').text(data.kategori_id);
-                    $('[name="nama_barang"]').val(data.nama_barang);                    
-                    $('[name="harga_barang"]').val(data.harga);       
+                    $('[name="barang_id"]').val(data[0].barang_id);
+                   
+                    if(data[0].kategori_id == data[1].kategori_id)
+                    {
+                        $('#kategoriId option:selected').val(data[0].kategori_id);                        
+                        $('#isi').text(data[1].nama_kategori);
+                    }
+
+                    $('[name="nama_barang"]').val(data[0].nama_barang);                    
+                    $('[name="harga_barang"]').val(data[0].harga);       
                     
                     $('#modal_form_edit').modal('show');
-                    $('.modal-title').text('Update Barang '+ data.nama_barang);
+                    $('.modal-title').text('Update Barang '+ data[0].nama_barang);
+                },
+                beforeSend: function()
+                {
+                    
+                }
+            });
+        }
+
+        var listEdit = function(id){
+            $.ajax({
+                url: base_url + "barang/listEdit/" + id,
+                data: "GET",
+                dataType: "json",
+                success: function(data){
+                        var total = $(data[0]).length;
+                        $.each(data,function (index,value){
+                            if(index == total ){
+                                return false;
+                            }else{
+                                $('<option>').val(value.kategori_id).text(value.nama_kategori).appendTo('#kategoriId');
+                            }
+                        });
+
+
+                    // if($('.btn btn-warning btn_edit').click()){
+                    //     $.each(data,function (index,value){
+                    //         if($('#kategoriId').click()){
+                    //             $('<option>').val(value.kategori_id).text(value.nama_kategori).appendTo('#kategoriId');
+                    //         }else{
+                    //             return false;
+                    //         }
+                    //     });
+                    // }else{
+                    //     window.location='';
+                    // }
+
                 },
                 beforeSend: function()
                 {

@@ -78,6 +78,7 @@
               <div class="clearfix"></div>
 
               <div class="separator">
+              <a class="reset_pass" href="<?=base_url()?>">Login</a>
 
 
                 <div class="clearfix"></div>

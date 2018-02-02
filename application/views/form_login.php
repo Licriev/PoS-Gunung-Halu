@@ -59,8 +59,8 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-
                 <a class="reset_pass" href="#">Lost your password?</a>
+                <a class="reset_pass" style="float:left" href="<?=base_url('auth/register')?>">Register</a>
 
                 <div class="clearfix"></div>
                 <br />

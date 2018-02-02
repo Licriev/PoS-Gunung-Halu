@@ -68,11 +68,12 @@
                           <div class="form-group">
                               <label class="control-label col-md-3" for="kategori_id">Kategori</label>
                               <div class="col-md-9">
-                                <select name="kategori_id" id="kategoriId">
+                                <select class="form-control" name="kategori_id" id="kategoriId">
                                 <option value="" id="isi"></option>
-                                <?php foreach($listKategori as $a): ?>
-                                  <option value="<?=$a->kategori_id?>" id="kategori"><?=$a->kategori_id?></option>                                
-                                <?php endforeach; ?>
+                                <?php foreach($listKategori as $d){ ?>
+                                  <option value="<?=$d->kategori_id?>" id="kategoriDll"><?=$d->nama_kategori?></option>
+                                <?php } ?>
+                                  
                                 </select>
                               </div>
                           </div>

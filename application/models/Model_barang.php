@@ -27,13 +27,31 @@ class Model_barang extends CI_Model{
         $this->db->delete($tabel);
     }
 
-    public function get_by_id($tabel,$id)
+    public function get_by_id($tabel,$where,$id)
     {
         return $this->db->from($tabel)
-                        ->where('barang_id',$id)
+                        ->where($where,$id)
                         ->get()
                         ->row();
 
+    }
+
+    public function innerJoin()
+    {
+        return  $this->db->select('*')
+                         ->from('kategori_barang')
+                         ->join('barang', 'barang.kategori_id = kategori_barang.kategori_id')
+                         ->get()
+                         ->row();
+    }
+
+    public function select_not_where($tabel,$id)
+    {
+        return $this->db->select()
+                        ->from($tabel)
+                        ->where_not_in('kategori_id',$id)
+                        ->get()
+                        ->result();
     }
 }
 

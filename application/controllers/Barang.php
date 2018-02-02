@@ -11,13 +11,12 @@ class Barang extends CI_Controller{
     public function tabelBarang()
     {
         $data['list'] = $this->model_barang->select('barang');
-        $data['listKategori'] = $this->model_barang->select('kategori_barang');
+        $data['listKategori'] = $this->model_barang->select('kategori_barang');        
 		$this->layout->set_header("Tabel Barang");
         $this->layout->set_title("Tabel Barang");
         $this->layout->set_breadcrumb('Dashboard',base_url());
         $this->layout->set_breadcrumb('Barang');
         $this->layout->set_breadcrumb('Tabel Barang');
-        $this->layout->set_style(base_url('assets')."/css/loader.css");        
         $this->layout->set_script(base_url('assets')."/js/barang.js");
         $this->layout->set_foot_tag('barang_master/jsfoot_barang');
         $this->layout->set_content('barang_master/view_barang');
@@ -34,7 +33,6 @@ class Barang extends CI_Controller{
         $this->layout->set_breadcrumb('Dashboard',base_url());
         $this->layout->set_breadcrumb('Barang');
         $this->layout->set_breadcrumb('Tabel Barang');
-        $this->layout->set_style(base_url('assets')."/css/loader.css");          
         $this->layout->set_script(base_url('assets')."/js/barang.js");
         $this->layout->set_foot_tag('barang_master/jsfoot_barang');
         $this->layout->set_content('barang_master/view_input');
@@ -67,7 +65,6 @@ class Barang extends CI_Controller{
             $this->layout->set_breadcrumb('Dashboard',base_url());
             $this->layout->set_breadcrumb('Barang');
             $this->layout->set_breadcrumb('Tabel Barang');
-            $this->layout->set_style(base_url('assets')."/css/loader.css");                    
             $this->layout->set_script(base_url('assets')."/js/barang.js");
             $this->layout->set_foot_tag('barang_master/jsfoot_barang');
             $this->layout->set_content('barang_master/view_input');
@@ -80,8 +77,16 @@ class Barang extends CI_Controller{
 
     public function ajaxEdit($id)
     {
-        $data = $this->model_barang->get_by_id('barang',$id);
-        echo json_encode($data);
+        $data1 = $this->model_barang->get_by_id('barang','barang_id',$id);
+        $data2 = $this->model_barang->get_by_id('kategori_barang','kategori_id',$data1->kategori_id);
+        echo json_encode(array($data1,$data2));
+    }
+
+    public function listEdit($id)
+    {
+        $data1 = $this->model_barang->get_by_id('barang','barang_id',$id);        
+        $data2 = $this->model_barang->select_not_where('kategori_barang',$data1->kategori_id);
+        echo json_encode($data2);        
     }
 
     public function prosesUpdate($id)
