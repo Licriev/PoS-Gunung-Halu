@@ -32,7 +32,7 @@ class Barang extends CI_Controller{
         $this->layout->set_title("Input Barang");
         $this->layout->set_breadcrumb('Dashboard',base_url());
         $this->layout->set_breadcrumb('Barang');
-        $this->layout->set_breadcrumb('Tabel Barang');
+        $this->layout->set_breadcrumb('Input Barang');
         $this->layout->set_script(base_url('assets')."/js/barang.js");
         $this->layout->set_foot_tag('barang_master/jsfoot_barang');
         $this->layout->set_content('barang_master/view_input');

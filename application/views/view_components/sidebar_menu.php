@@ -20,6 +20,13 @@
         </ul>
       </li>
 
+      <li class=""><a><i class="fa fa-archive"></i> Kategori <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu" style="display: none;">
+          <li><a href="<?php echo base_url('kategori/formInput');?>">Input Kategori</a></li>
+          <li><a href="<?php echo base_url('kategori/tabelKategori');?>">Tabel Kategori</a></li>
+        </ul>
+      </li>
+
     </ul>
   </div>
 
